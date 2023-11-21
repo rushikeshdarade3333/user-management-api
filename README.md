@@ -12,11 +12,24 @@
 
 The User Management API is a Spring Boot-based web application designed for efficient management of user data. This API provides RESTful endpoints for creating, retrieving, updating, and deleting user information, making it a versatile solution for user-related operations in various applications.
 
+Certainly! Here's a section for the developer/creator with badges for LinkedIn and Gmail:
+
+---
+
 ## Developer
 
-Linkdin profile - ![LinkedIn](https://img.shields.io/badge/LinkedIn-Connect-blue?style=for-the-badge&logo=linkedin&labelColor=0077B5)(www.linkedin.com/in/rushikesh-darade)
+![LinkedIn](https://img.shields.io/badge/LinkedIn-Connect-blue?style=for-the-badge&logo=linkedin&labelColor=0077B5)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-Connect-blue?style=social&logo=linkedin&labelColor=0077B5)](https://www.linkedin.com/in/your-linkedin-profile)
 
-Email id        - ![Gmail](https://img.shields.io/badge/Gmail-Contact-red?style=for-the-badge&logo=gmail&labelColor=D14836)(mailto:rushikeshdarade3333@gmail.com)
+![Gmail](https://img.shields.io/badge/Gmail-Contact-red?style=for-the-badge&logo=gmail&labelColor=D14836)
+[![Gmail](https://img.shields.io/badge/Gmail-Contact-red?style=social&logo=gmail&labelColor=D14836)](mailto:your-email@gmail.com)
+
+Feel free to replace "your-linkedin-profile" with your actual LinkedIn profile URL and "your-email@gmail.com" with your Gmail email address.
+## Developer
+
+Linkdin profile - ![LinkedIn](https://img.shields.io/badge/LinkedIn-Connect-blue?style=for-the-badge&logo=linkedin&labelColor=0077B5)(www.linkedin.com/in/rushikesh-darade).
+
+Email id        - ![Gmail](https://img.shields.io/badge/Gmail-Contact-red?style=for-the-badge&logo=gmail&labelColor=D14836)(mailto:rushikeshdarade3333@gmail.com).
 
 ## Features
 
