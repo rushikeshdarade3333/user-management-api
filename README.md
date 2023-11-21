@@ -12,6 +12,12 @@
 
 The User Management API is a Spring Boot-based web application designed for efficient management of user data. This API provides RESTful endpoints for creating, retrieving, updating, and deleting user information, making it a versatile solution for user-related operations in various applications.
 
+## Developer
+
+Linkdin profile - ![LinkedIn](https://img.shields.io/badge/LinkedIn-Connect-blue?style=for-the-badge&logo=linkedin&labelColor=0077B5)(www.linkedin.com/in/rushikesh-darade)
+
+Email id        - ![Gmail](https://img.shields.io/badge/Gmail-Contact-red?style=for-the-badge&logo=gmail&labelColor=D14836)(mailto:rushikeshdarade3333@gmail.com)
+
 ## Features
 
 - **Get All Users:**
