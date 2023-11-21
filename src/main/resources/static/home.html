@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Management System</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        /* Your custom styles here */
+    </style>
+</head>
+<body>
+    <div class="container mt-5">
+        <h2>User Management System</h2>
+        <hr>
+        <div class="row">
+            <div class="col-md-6">
+                <!-- User form -->
+                <form id="userForm">
+                    <input type="hidden" id="userId">
+                    <div class="form-group">
+                        <label for="firstName">First Name:</label>
+                        <input type="text" class="form-control" id="firstName" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="lastName">Last Name:</label>
+                        <input type="text" class="form-control" id="lastName" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email:</label>
+                        <input type="email" class="form-control" id="email" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Save</button>
+                    <button type="button" class="btn btn-secondary" id="cancelBtn">Cancel</button>
+                </form>
+            </div>
+        </div>
+        <hr>
+        <div class="row">
+            <div class="col-md-6">
+                <!-- User table -->
+                <h4>Users</h4>
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>First Name</th>
+                            <th>Last Name</th>
+                            <th>Email</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody id="userTableBody">
+                        <!-- User data will be populated here -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            loadUsers();  // Load users on page load
+
+            // Handle form submission
+            $('#userForm').submit(function(event) {
+                event.preventDefault();
+                saveUser();
+            });
+
+            // Handle cancel button click
+            $('#cancelBtn').click(function() {
+                clearForm();
+            });
+        });
+
+        // Function to fetch all users from the backend
+        function loadUsers() {
+            $.get('http://localhost:8080/', function(data) {
+                $('#userTableBody').empty();  // Clear existing data
+                data.forEach(function(user) {
+                    $('#userTableBody').append(`
+                        <tr>
+                            <td>${user.id}</td>
+                            <td>${user.firstName}</td>
+                            <td>${user.lastName}</td>
+                            <td>${user.email}</td>
+                            <td>
+                                <button class="btn btn-info" onclick="editUser(${user.id})">Edit</button>
+                                <button class="btn btn-danger" onclick="deleteUser(${user.id})">Delete</button>
+                            </td>
+                        </tr>
+                    `);
+                });
+            });
+        }
+
+        // Function to create a new user using the backend API
+        function saveUser() {
+            var user = {
+                firstName: $('#firstName').val(),
+                lastName: $('#lastName').val(),
+                email: $('#email').val()
+            };
+
+            $.post('http://localhost:8080/', user, function(data) {
+                loadUsers();  // Reload users after creating a new one
+                clearForm();  // Clear the form
+            });
+        }
+
+        // Function to delete a user using the backend API
+        function deleteUser(userId) {
+            $.ajax({
+                url: `http://localhost:8080/${userId}`,
+                type: 'DELETE',
+                success: function() {
+                    loadUsers();  // Reload users after deleting one
+                }
+            });
+        }
+
+        // Function to populate the form for editing a user
+        function editUser(userId) {
+            $.get(`http://localhost:8080/${userId}`, function(data) {
+                $('#userId').val(data.id);
+                $('#firstName').val(data.firstName);
+                $('#lastName').val(data.lastName);
+                $('#email').val(data.email);
+            });
+        }
+
+        // Function to clear the form fields
+        function clearForm() {
+            $('#userId').val('');
+            $('#firstName').val('');
+            $('#lastName').val('');
+            $('#email').val('');
+        }
+    </script>
+</body>
+</html>
